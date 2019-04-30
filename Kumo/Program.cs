@@ -8,7 +8,6 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Kumo
 {
@@ -36,12 +35,12 @@ namespace Kumo
     struct AbuseStruct
     {
         public string IpAddress;
-        public List<int> Timestamps;
+        public Queue<int> Timestamps;
 
         public AbuseStruct(string ipAddress)
         {
             IpAddress = ipAddress;
-            Timestamps = new List<int>();
+            Timestamps = new Queue<int>();
         }
 
         public override string ToString()
@@ -363,7 +362,7 @@ namespace Kumo
                         _config.AbuseLogDictionary[key] = new AbuseStruct(ip);
                     }
 
-                    _config.AbuseLogDictionary[key].Timestamps.Add(timestamp);
+                    _config.AbuseLogDictionary[key].Timestamps.Enqueue(timestamp);
                 }
             }
         }
@@ -383,26 +382,27 @@ namespace Kumo
                 }
 
                 // remove expired timestamps
-                var timestamps = value.Timestamps;
-                var bs = timestamps.BinarySearch(expireTimestamp);
-                if (bs < 0)
-                {
-                    bs = ~bs;
-                }
-
-                if (bs > 0)
-                {
-                    timestamps.RemoveRange(0, bs);
-                }
-
-                if (timestamps.Count == 0)
+                if (value.Timestamps.Count == 0)
                 {
                     itemsToRemove.Add(key);
                     continue;
                 }
 
+                while (true)
+                {
+                    var timestamp = value.Timestamps.Peek();
+                    if (timestamp < expireTimestamp)
+                    {
+                        value.Timestamps.Dequeue();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 // count & block abusing ips
-                if (timestamps.Count >= _config.AbusesToBlock)
+                if (value.Timestamps.Count >= _config.AbusesToBlock)
                 {
                     var blockStruct = new BlockStruct(value.IpAddress, currentTimestamp + _config.BlockExpirationTime);
                     BlockIp(ref blockStruct);
