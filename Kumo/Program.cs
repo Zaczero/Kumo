@@ -61,7 +61,7 @@ namespace Kumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Watcher crashed: {ex.Message}");
+                    Console.WriteLine($"Watcher crashed: {ex.Message}{ex.StackTrace}");
                     Thread.Sleep(1_000);
                 }
             }
@@ -155,24 +155,30 @@ namespace Kumo
                     continue;
                 }
 
-                // remove expired timestamps
-                if (value.Timestamps.Count == 0)
-                {
-                    itemsToRemove.Add(key);
-                    continue;
-                }
-
                 while (true)
                 {
-                    var timestamp = value.Timestamps.Peek();
-                    if (timestamp < expireTimestamp)
+                    if (value.Timestamps.TryPeek(out var timestamp))
                     {
-                        value.Timestamps.Dequeue();
+                        if (timestamp < expireTimestamp)
+                        {
+                            value.Timestamps.Dequeue();
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                     else
                     {
                         break;
                     }
+                }
+                
+                // remove expired timestamps
+                if (value.Timestamps.Count == 0)
+                {
+                    itemsToRemove.Add(key);
+                    continue;
                 }
 
                 // count & block abusing ips
