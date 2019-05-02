@@ -101,6 +101,8 @@ namespace Kumo
 
                 if (_dataChanged)
                 {
+                    Utilities.SaveNginxSnippet();
+
                     DataManager.SaveData(DataFileName, GlobalVars.Data);
                     _dataChanged = false;
                 }
