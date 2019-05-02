@@ -132,6 +132,10 @@ namespace Kumo
                         AbuseDictionary[ip] = new AbuseStruct(ip);
 
                     AbuseDictionary[ip].Timestamps.Enqueue(timestamp);
+
+                    // save data file so we don't rescan same error log after restart
+                    // -> WatcherStreamPosition
+                    _dataChanged = true;
                 }
             }
         }
