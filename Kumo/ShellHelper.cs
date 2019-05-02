@@ -2,7 +2,7 @@
 
 namespace Kumo
 {
-    public static class ShellHelper
+    static class ShellHelper
     {
         public static string Bash(this string cmd)
         {
