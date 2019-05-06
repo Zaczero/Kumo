@@ -25,6 +25,7 @@ namespace Kumo
                 CloudflareEmail = string.Empty,
                 CloudflareApiKey = string.Empty,
                 BlockNote = "Created by Kumo",
+				BlockRange = 24,
 
                 WatcherTargetFile = "/var/log/nginx/error.log",
                 WatcherCheckSleep = 2_000,

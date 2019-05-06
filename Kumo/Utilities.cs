@@ -42,7 +42,16 @@ namespace Kumo
             var sb = new StringBuilder("# " + GlobalVars.Config.BlockNote);
 
             foreach (var blockStruct in GlobalVars.Data.BlockQueue)
-                sb.AppendLine($"deny {blockStruct.IpAddress};");
+            {
+	            if (GlobalVars.Config.BlockRange > 0 && RegexPatterns.IpV4Regex.Match(blockStruct.IpAddress).Success)
+	            {
+		            sb.AppendLine($"deny {blockStruct.IpAddress}/{GlobalVars.Config.BlockRange};");
+	            }
+	            else
+	            {
+		            sb.AppendLine($"deny {blockStruct.IpAddress};");
+	            }
+            }
 
             File.WriteAllText(GlobalVars.Config.NginxBlockSnippetFile, sb.ToString());
             "nginx -s reload".Bash();
