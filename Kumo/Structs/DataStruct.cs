@@ -2,11 +2,11 @@
 
 namespace Kumo.Structs
 {
-    struct DataStruct
-    {
-        public long WatcherStreamPosition;
+	struct DataStruct
+	{
+		public long WatcherStreamPosition;
 
-        public Queue<BlockStruct> BlockQueue;
-        public HashSet<string> BlockHashSet;
-    }
+		public Queue<BlockStruct> BlockQueue;
+		public HashSet<string> BlockHashSet;
+	}
 }
