@@ -12,19 +12,12 @@ namespace Kumo
 	{
 		private const string BlockMode = "block";
 
-		
-
 		public static string Block(string ipAddress)
 		{
 			while (true)
 			{
 				try
 				{
-					if (GlobalVars.Config.BlockRange > 0 && RegexPatterns.IpV4Regex.Match(ipAddress).Success)
-					{
-						ipAddress += "/" + GlobalVars.Config.BlockRange;
-					}
-
 					var request = new Dictionary<string, object>
 					{
 						["mode"] = BlockMode,

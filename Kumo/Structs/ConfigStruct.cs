@@ -7,7 +7,6 @@ namespace Kumo.Structs
 		public string CloudflareEmail;
 		public string CloudflareApiKey;
 		public string BlockNote;
-		public int BlockRange;
 
 		public string WatcherTargetFile;
 		public int WatcherCheckSleep;

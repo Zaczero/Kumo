@@ -39,18 +39,11 @@ namespace Kumo
 
 		public static void SaveNginxSnippet()
 		{
-			var sb = new StringBuilder("# " + GlobalVars.Config.BlockNote);
+			var sb = new StringBuilder("# " + GlobalVars.Config.BlockNote + Environment.NewLine);
 
 			foreach (var blockStruct in GlobalVars.Data.BlockQueue)
 			{
-				if (GlobalVars.Config.BlockRange > 0 && RegexPatterns.IpV4Regex.Match(blockStruct.IpAddress).Success)
-				{
-					sb.AppendLine($"deny {blockStruct.IpAddress}/{GlobalVars.Config.BlockRange};");
-				}
-				else
-				{
-					sb.AppendLine($"deny {blockStruct.IpAddress};");
-				}
+				sb.AppendLine($"deny {blockStruct.IpAddress};");
 			}
 
 			File.WriteAllText(GlobalVars.Config.NginxBlockSnippetFile, sb.ToString());
