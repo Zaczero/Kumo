@@ -73,5 +73,27 @@ namespace Kumo
 				}
 			}
 		}
+
+		public static void SecurityLevel(string id, string value)
+		{
+			while (true)
+			{
+				try
+				{
+					var response = GlobalVars.Http.SendAsync(
+						new HttpRequestMessage(HttpMethod.Patch, $"https://api.cloudflare.com/client/v4/zones/{id}/settings/security_level")
+						{
+							Content = new StringContent($"{{\"value\":\"{value}\"}}", Encoding.UTF8, "application/json")
+						}).GetAwaiter().GetResult();
+
+					break;
+				}
+				catch (Exception ex)
+				{
+					Debug.WriteLine($"SecurityLevel() crashed: {ex.Message}");
+					Thread.Sleep(1_000);
+				}
+			}
+		}
 	}
 }

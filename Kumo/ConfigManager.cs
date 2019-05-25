@@ -1,4 +1,5 @@
-﻿using Kumo.Structs;
+﻿using System.Collections.Generic;
+using Kumo.Structs;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -24,6 +25,11 @@ namespace Kumo
 			{
 				CloudflareEmail = string.Empty,
 				CloudflareApiKey = string.Empty,
+
+				CloudflareUnderAttackMode = false,
+				CloudflareModeDefault = "high",
+				CloudflareManageZones = new List<string>(),
+
 				BlockNote = "Created by Kumo",
 
 				WatcherTargetFile = "/var/log/nginx/error.log",

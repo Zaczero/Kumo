@@ -6,6 +6,11 @@ namespace Kumo.Structs
 	{
 		public string CloudflareEmail;
 		public string CloudflareApiKey;
+
+		public bool CloudflareUnderAttackMode;
+		public string CloudflareModeDefault;
+		public List<string> CloudflareManageZones;
+
 		public string BlockNote;
 
 		public string WatcherTargetFile;

@@ -52,6 +52,15 @@ namespace Kumo
 			GlobalVars.Http.DefaultRequestHeaders.TryAddWithoutValidation("X-Auth-Email", GlobalVars.Config.CloudflareEmail);
 			GlobalVars.Http.DefaultRequestHeaders.TryAddWithoutValidation("X-Auth-Key", GlobalVars.Config.CloudflareApiKey);
 
+			if (GlobalVars.Config.CloudflareUnderAttackMode)
+			{
+				foreach (var id in GlobalVars.Config.CloudflareManageZones)
+				{
+					CloudflareUtilities.SecurityLevel(id, GlobalVars.Config.CloudflareModeDefault);
+					Console.WriteLine($"SecurityLevel({id}) = {GlobalVars.Config.CloudflareModeDefault}");
+				}
+			}
+
 			while (true)
 			{
 				try
@@ -213,6 +222,15 @@ namespace Kumo
 			{
 				_underAttack = true;
 				Console.WriteLine($"UAM is now enabled (blocked {blockCounter} IPs in one tick)");
+
+				if (GlobalVars.Config.CloudflareUnderAttackMode)
+				{
+					foreach (var id in GlobalVars.Config.CloudflareManageZones)
+					{
+						CloudflareUtilities.SecurityLevel(id, "under_attack");
+						Console.WriteLine($"SecurityLevel({id}) = under_attack");
+					}
+				}
 			}
 
 			if (_underAttack)
@@ -227,6 +245,15 @@ namespace Kumo
 					{
 						_underAttack = false;
 						Console.WriteLine("UAM is now disabled, no more abuses detected");
+
+						if (GlobalVars.Config.CloudflareUnderAttackMode)
+						{
+							foreach (var id in GlobalVars.Config.CloudflareManageZones)
+							{
+								CloudflareUtilities.SecurityLevel(id, GlobalVars.Config.CloudflareModeDefault);
+								Console.WriteLine($"SecurityLevel({id}) = {GlobalVars.Config.CloudflareModeDefault}");
+							}
+						}
 					}
 				}
 			}
