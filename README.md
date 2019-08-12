@@ -35,12 +35,21 @@ Please keep in mind that this is a very simplified example.
 4. Open Kumo installation directory *(so you can see Kumo.dll etc. files after executing `ls` command)*
 5. Make `install-service.sh` file executable using `sudo chmod +x install-service.sh` command
 6. And then execute it with `sudo ./install-service.sh`
-7. Configure Kumo by editing `config.json` file *([documentation](#configuration))*
-8. Configure Nginx to work with Kumo *([tutorial](#nginx-configuration))*
+7. Configure Kumo by editing `config.json` file *([documentation](#documentation))*
+8. Configure Nginx to work with Kumo *([tutorial](#configuring-nginx))*
 9. Test your configuration with `dotnet Kumo.dll` command *(Ctrl+C to exit)*
 10. Start service by running `sudo systemctl start kumo`
 
 Looking for uninstallation instructions? [Click here](#uninstallation).
+
+### 🔧 Configuring Nginx
+
+1. First of all make sure that the `nginx -s reload` command is working properly
+2. Edit the Nginx configuration `nginx.conf` file and add the following line `include /etc/nginx/snippets/kumo.conf;`
+   *(path must be the same as *NginxBlockSnippetFile* from Kumo `config.json` file)*
+3. Double-check that you have configured [Nginx rate limiting](https://www.nginx.com/blog/rate-limiting-nginx/) properly
+   and that you are getting [user's real ip](https://www.mysterydata.com/how-to-get-the-real-ip-address-using-cloudflare-and-nginx-cwp-centos-web-panel/) from the Cloudflare header
+   *([latest Cloudflare IP ranges](https://www.cloudflare.com/ips/))*
 
 ### 📬 Contact
 
@@ -51,7 +60,7 @@ Looking for uninstallation instructions? [Click here](#uninstallation).
 * Bitcoin: `35n1y9iHePKsVTobs4FJEkbfnBg2NtVbJW`
 * Ethereum: `0xc69C7FC9Ce691c95f38798506EfdBB8d14005B67`
 
-### 🛠️ Configuration
+### 🛠️ Documentation
 
 * **CloudflareEmail**  
 Your cloudlfare account email address
@@ -108,15 +117,6 @@ How many abuses are required to add IP to the blacklist while Under Attack Mode 
 
 * **NginxBlockSnippetFile**  
 Full path where Nginx block .conf file will be created
-
-### 🔧 Nginx Configuration
-
-1. First of all make sure that the `nginx -s reload` command is working properly
-2. Edit the Nginx configuration `nginx.conf` file and add the following line `include /etc/nginx/snippets/kumo.conf;`
-   *(path must be the same as *NginxBlockSnippetFile* from Kumo `config.json` file)*
-3. Double-check that you have configured [Nginx rate limiting](https://www.nginx.com/blog/rate-limiting-nginx/) properly
-   and that you are getting [user's real ip](https://www.mysterydata.com/how-to-get-the-real-ip-address-using-cloudflare-and-nginx-cwp-centos-web-panel/) from the Cloudflare header
-   *([latest Cloudflare IP ranges](https://www.cloudflare.com/ips/))*
 
 ### 🤔 How to find your Cloudflare API key
 
