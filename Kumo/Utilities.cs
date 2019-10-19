@@ -47,7 +47,7 @@ namespace Kumo
 			}
 
 			File.WriteAllText(GlobalVars.Config.NginxBlockSnippetFile, sb.ToString());
-			"nginx -s reload".Bash();
+			GlobalVars.Config.NginxReloadBashCommand.Bash();
 		}
 	}
 }

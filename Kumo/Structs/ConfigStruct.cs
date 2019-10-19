@@ -26,5 +26,6 @@ namespace Kumo.Structs
 		public int AbusesToBlockUnderAttack;
 
 		public string NginxBlockSnippetFile;
+		public string NginxReloadBashCommand;
 	}
 }
