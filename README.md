@@ -29,7 +29,7 @@ Please keep in mind that this is a very simplified example.
 
 ### 🏁 Installation
 
-Check out this amazing [wiki article](Installation-instructions)!  
+Check out this amazing [wiki article](https://github.com/Zaczero/Kumo/wiki/Installation-instructions)!  
 It explains pretty much everything you need to know.
 
 ### 📬 Contact
