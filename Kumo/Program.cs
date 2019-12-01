@@ -184,7 +184,7 @@ namespace Kumo
 						break;
 					}
 				}
-				
+
 				// remove expired timestamps
 				if (value.Timestamps.Count == 0)
 				{
@@ -277,7 +277,7 @@ namespace Kumo
 
 					GlobalVars.Data.BlockQueue.Dequeue();
 					GlobalVars.Data.BlockHashSet.Remove(blockStruct.IpAddress);
-					
+
 					_dataChanged = true;
 				}
 				else
