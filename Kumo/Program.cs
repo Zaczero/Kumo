@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace Kumo
 {
-	internal class Program
+	public static class Program
 	{
 		private const string ConfigFileName = "config.json";
 		private const string DataFileName = "data.json";

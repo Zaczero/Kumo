@@ -1,9 +1,9 @@
 ﻿namespace Kumo.Structs
 {
-	struct BlockStruct
+	public struct BlockStruct
 	{
-		public string IpAddress;
-		public int ExpirationTime;
+		public readonly string IpAddress;
+		public readonly int ExpirationTime;
 		public string BlockId;
 
 		public BlockStruct(string ipAddress, int expirationTime)

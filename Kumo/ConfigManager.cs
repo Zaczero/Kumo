@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using Kumo.Structs;
+﻿using Kumo.Structs;
 using Newtonsoft.Json;
 using System.IO;
 
 namespace Kumo
 {
-	class ConfigManager
+	public static class ConfigManager
 	{
 		public static ConfigStruct ReadConfig(string path)
 		{
@@ -38,7 +37,7 @@ namespace Kumo
 
 				CloudflareUnderAttackMode = false,
 				CloudflareModeDefault = "high",
-				CloudflareManageZones = new List<string>(),
+				CloudflareManageZones = new string[0],
 
 				BlockNote = "Created by Kumo",
 

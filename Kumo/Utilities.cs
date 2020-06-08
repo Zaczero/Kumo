@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kumo
 {
-	class Utilities
+	public static class Utilities
 	{
 		public static int GetCurrentTimestamp()
 		{

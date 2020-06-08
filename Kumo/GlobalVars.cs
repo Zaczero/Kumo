@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace Kumo
 {
-	class GlobalVars
+	public static class GlobalVars
 	{
 		public static HttpClient Http;
 		public static ConfigStruct Config;

@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-
-namespace Kumo.Structs
+﻿namespace Kumo.Structs
 {
-	struct ConfigStruct
+	public struct ConfigStruct
 	{
 		public string CloudflareEmail;
 		public string CloudflareApiKey;
 
 		public bool CloudflareUnderAttackMode;
 		public string CloudflareModeDefault;
-		public List<string> CloudflareManageZones;
+		public string[] CloudflareManageZones;
 
 		public string BlockNote;
 

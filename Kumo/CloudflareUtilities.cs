@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Kumo
 {
-	class CloudflareUtilities
+	public static class CloudflareUtilities
 	{
 		private const string BlockMode = "block";
 

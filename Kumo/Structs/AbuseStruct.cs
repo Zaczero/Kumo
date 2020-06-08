@@ -2,10 +2,10 @@
 
 namespace Kumo.Structs
 {
-	struct AbuseStruct
+	public readonly struct AbuseStruct
 	{
-		public string IpAddress;
-		public Queue<int> Timestamps;
+		public readonly string IpAddress;
+		public readonly Queue<int> Timestamps;
 
 		public AbuseStruct(string ipAddress)
 		{

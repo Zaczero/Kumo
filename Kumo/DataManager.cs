@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Kumo
 {
-	class DataManager
+	public static class DataManager
 	{
 		public static DataStruct ReadData(string path)
 		{

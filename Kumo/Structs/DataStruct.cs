@@ -2,7 +2,7 @@
 
 namespace Kumo.Structs
 {
-	struct DataStruct
+	public struct DataStruct
 	{
 		public long WatcherStreamPosition;
 
