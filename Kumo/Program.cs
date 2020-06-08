@@ -14,6 +14,7 @@ namespace Kumo
 	{
 		private const string ConfigFileName = "config.json";
 		private const string DataFileName = "data.json";
+
 		private static readonly Dictionary<string, AbuseStruct> AbuseDictionary = new Dictionary<string, AbuseStruct>();
 
 		private static bool _dataChanged;
