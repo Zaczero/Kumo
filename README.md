@@ -8,7 +8,7 @@ Kumo in the same scenario can keep the CPU usage around 1%-5% and it has some ni
 
 ### 🚗 Requirements
 
-* .NET Core 2.2
+* .NET Core 2.1
 * Cloudflare
 * Linux server
 * Nginx
@@ -20,7 +20,7 @@ Kumo in the same scenario can keep the CPU usage around 1%-5% and it has some ni
 * Mitigates both Layer7 *(HTTP)* DoS and DDoS attacks
 * Enables Cloudflare Under Attack Mode when massive DDoS is detected *(optional)*
 
-### 👨‍💻 How it works
+### 👨‍💻 How does it work
 
 A basic infographic to better visualise what's going on under the hood.  
 Please keep in mind that this is a very simplified example.
@@ -35,11 +35,6 @@ It explains pretty much everything you need to know.
 ### 📬 Contact
 
 * Email: kamil@monicz.pl
-
-### ☕ Support me
-
-* Bitcoin: `35n1y9iHePKsVTobs4FJEkbfnBg2NtVbJW`
-* Ethereum: `0xc69C7FC9Ce691c95f38798506EfdBB8d14005B67`
 
 ### 📃 License
 
