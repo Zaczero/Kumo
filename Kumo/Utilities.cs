@@ -8,7 +8,7 @@ namespace Kumo
 	{
 		public static int GetCurrentTimestamp()
 		{
-			var date = DateTime.UtcNow;
+			var date = DateTime.Now;
 
 			return GetTimestamp(
 				(short) date.Year,
