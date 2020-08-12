@@ -1,5 +1,7 @@
 # ![Kumo small logo](https://github.com/Zaczero/Kumo/blob/master/images/KumoSmall.png) Kumo - DDoS mitigation
 
+[![Build Status](https://travis-ci.com/Zaczero/Kumo.svg?branch=master)](https://travis-ci.com/Zaczero/Kumo)
+
 Kumo is a project started in order to provide a free, open-sourced and reliable solution in DDoS mitigation.
 
 While creating Kumo I was thinking about it as a better alternative to *fail2ban* software.
