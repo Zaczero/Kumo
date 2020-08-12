@@ -1,0 +1,6 @@
+language: csharp
+solution: Kumo.sln
+mono: none
+dotnet: 2.1.809
+script:
+ - dotnet restore
