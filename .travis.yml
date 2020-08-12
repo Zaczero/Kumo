@@ -3,4 +3,5 @@ solution: Kumo.sln
 mono: none
 dotnet: 2.1.809
 script:
- - dotnet restore
+ - dotnet build -c Debug
+ - dotnet build -c Release
